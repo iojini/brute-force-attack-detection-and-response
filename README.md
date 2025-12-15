@@ -29,6 +29,20 @@ Investigation confirmed no successful unauthorized access occurred. Containment 
 -	Indicators of systematic credential stuffing attempts
 
 ---
+## Incident Timeline
+
+| Time | Event |
+|------|-------|
+| T-5:00 | Initial brute force attempts begin |
+| T+0:00 | Brute force attempts detected |
+| T+0:15 | SOC analyst assigned, status: Active |
+| T+0:45 | KQL query confirms no successful authentication |
+| T+1:00 | Containment: Device isolation via MDE |
+| T+1:30 | NSG rules updated to restrict RDP access |
+| T+2:00 | Malware scans complete - negative results |
+| T+3:00 | Incident closed as True Positive - Benign |
+
+---
 ## Technical Analysis
 The incident involved coordinated brute force authentication attempts targeting two Azure Virtual Machines. Analysis of DeviceLogonEvents telemetry revealed systematic password guessing behavior characteristic of automated credential stuffing tools.
 
