@@ -91,7 +91,7 @@ DeviceLogonEvents
 ---
 
 ## Response Actions (NIST 800-61)
-### Preparation
+### <ins>Preparation</ins>
 -	Incident response procedures documented and accessible
 -	Microsoft Sentinel analytics rules configured and operational
 -	Microsoft Defender for Endpoint deployed across virtual machine fleet
@@ -99,7 +99,7 @@ DeviceLogonEvents
 
 ---
 
-### Detection & Analysis
+### <ins>Detection & Analysis</ins>
 #### Initial Detection
 -	Automated alert triggered via Microsoft Sentinel scheduled query rule
 -	Incident automatically created with entity mappings (RemoteIP and DeviceName)
@@ -114,7 +114,7 @@ DeviceLogonEvents
 
 ---
 
-### Containment, Eradication, and Recovery
+### <ins>Containment, Eradication, and Recovery</ins>
 #### Containment Measures
 -	Device isolation initiated via Microsoft Defender for Endpoint on all affected systems
 -	Anti-malware scans executed on isolated devices
@@ -133,7 +133,7 @@ DeviceLogonEvents
 
 ---
 
-### Post-Incident Activities
+### <ins>Post-Incident Activities</ins>
 #### Documentation
 -	Comprehensive incident notes recorded within Microsoft Sentinel
 -	Timeline of events documented with UTC timestamps
