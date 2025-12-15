@@ -197,13 +197,16 @@ Azure Virtual Machines were deployed with Network Security Group configurations 
 | Hostname | `corey-win-machi` | Targeted Asset |
 | Hostname | `windows-target-1` | Targeted Asset |
 
-### Detection Rule Configuration
-**Sentinel Scheduled Query Rule Setup:**
--	**Query Interval:** Every 4 hours
+---
+
+### Detection Rule Configuration (Sentinel Scheduled Query Rule Setup)
+- **Rule Name:** Brute Force Attack Detection
+- **Data Source:** DeviceLogonEvents
+-	**Query Frequency:** Every 4 hours
 -	**Lookback Period:** Last 5 hours
--	**Threshold:** ≥10 failed logon attempts per RemoteIP/DeviceName pair
--	**Data Source:** DeviceLogonEvents table (Microsoft Defender for Endpoint)
--	**Alert Grouping:** 24-hour consolidation window
+-	**Alert Threshold:** ≥10 failed logon attempts per RemoteIP/DeviceName pair
+
+---
 
 ### References
 -	NIST SP 800-61 Rev. 3: Incident Response Recommendations and Considerations for Cybersecurity Risk Management
@@ -211,9 +214,5 @@ Azure Virtual Machines were deployed with Network Security Group configurations 
 -	Microsoft Sentinel Documentation: Scheduled Query Rules
 -	Microsoft Defender for Endpoint: DeviceLogonEvents Schema
 -	Azure Network Security Groups Best Practices
-
-- **Recommendations:** Lockdown NSG rules for all VMs and enforce MFA on privileged accounts.
-
-🎉 **Status:** Incident resolved. No further action required.
 
 ---
