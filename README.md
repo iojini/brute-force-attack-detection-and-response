@@ -171,8 +171,52 @@ Azure Virtual Machines were deployed with Network Security Group configurations 
 ---
 
 ## Lessons Learned & Recommendations
+### What Worked Well
+-	Automated detection through Microsoft Sentinel scheduled query rules
+-	Effective log aggregation from Microsoft Defender for Endpoint to Log Analytics Workspace
+-	Rapid incident response and containment (under 3 hours from detection to closure)
+-	Strong password policies prevented successful credential compromise
+-	Entity mapping in Sentinel facilitated efficient investigation workflow
 
+### Areas for Improvement
+-	Proactive network hardening should occur at deployment, not post-incident
+-	Azure Policy enforcement needed to prevent misconfigured NSGs
+-	Consider implementing Azure Bastion to eliminate direct RDP exposure
+-	Detection query could be enhanced to identify successful brute force attempts
 
+### Recommendations
+
+| ID | Recommendation | Priority | Owner |
+|----|----------------|----------|-------|
+| REC-001 | Implement Azure Policy to enforce NSG hardening across all Virtual Machines, prohibiting 0.0.0.0/0 access for management ports (RDP, SSH) | **HIGH** | Cloud Ops |
+| REC-002 | Deploy Azure Bastion for all production Virtual Machines to eliminate direct internet exposure for administrative access | **HIGH** | Cloud Arch |
+| REC-003 | Enable Just-In-Time (JIT) VM Access in Microsoft Defender for Cloud for time-limited administrative access | **MEDIUM** | SecOps |
+| REC-004 | Enhance Sentinel detection query to include correlation for successful authentication following failed attempts (true brute force success) | **MEDIUM** | SOC |
+| REC-005 | Implement multi-factor authentication (MFA) requirement for all administrative access to Azure Virtual Machines | **HIGH** | Identity |
+| REC-006 | Conduct quarterly review of all NSG configurations to identify and remediate overly permissive rules | **LOW** | Cloud Ops |
+
+---
+
+## Supplemental Appendix
+### Indicators of Compromise (IOCs)
+
+| IOC Type | Value | Context |
+|----------|-------|---------|
+| IPv4 Address | `80.64.18.199` | Attack Source |
+| IPv4 Address | `88.214.50.59` | Attack Source |
+| Hostname | `corey-win-machi` | Targeted Asset |
+| Hostname | `windows-target-1` | Targeted Asset |
+
+### Detection Rule Configuration
+
+[start here]
+
+### References
+-	NIST SP 800-61 Rev. 3: Incident Response Recommendations and Considerations for Cybersecurity Risk Management
+-	MITRE ATT&CK Framework - Credential Access (TA0006)
+-	Microsoft Sentinel Documentation: Scheduled Query Rules
+-	Microsoft Defender for Endpoint: DeviceLogonEvents Schema
+-	Azure Network Security Groups Best Practices
 
 
 
