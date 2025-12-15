@@ -50,6 +50,7 @@ DeviceLogonEvents
 | summarize NumberOfFailures = count() by RemoteIP, ActionType, DeviceName
 | where NumberOfFailures >= 10
 ```
+<img width="1659" height="350" alt="IR1" src="https://github.com/user-attachments/assets/e00b5858-4caa-43f3-96fb-10e6c2a34c1c" />
 
 ---
 ### Investigation Query
